@@ -1,33 +1,22 @@
-/*class item {
-    constructor(sentence, start, end, status  ) {
-      this.sentence = sentence;
-      this.start = start;
-      this.end = end;
-      this.status = status;
-    }
-  }*/
 
-  var myNodelist = document.getElementsByTagName("LI");
+  var lista = document.getElementsByTagName("LI");
   var i;
-  for (i = 0; i < myNodelist.length; i++) {
+  for (i = 0; i < lista.length; i++) {
     var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
+    span.className = "cerrar";
     span.appendChild(txt);
-    myNodelist[i].appendChild(span);
+    lista[i].appendChild(span);
   }
   
-  // Click on a close button to hide the current list item
-  var close = document.getElementsByClassName("close");
+  var cerrar = document.getElementsByClassName("cerrar");
   var i;
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
+  for (i = 0; i < cerrar.length; i++) {
+    cerrar[i].onclick = function() {
       var div = this.parentElement;
       div.style.display = "none";
     }
   }
   
-  // Add a "checked" symbol when clicking on a list item
   var list = document.querySelector('ul');
   list.addEventListener('click', function(ev) {
     if (ev.target.tagName === 'LI') {
@@ -35,27 +24,27 @@
     }
   }, false);
   
-  // Create a new list item when clicking on the "Add" button
-  function newElement() {
+  function nuevoElemento() {
     var li = document.createElement("li");
-    var inputValue = document.getElementById("myInput").value;
-    var t = document.createTextNode(inputValue);
+    var inputValue = document.getElementById("escrito").value;
+    const fecha = Date(Date.now());
+    var t = document.createTextNode(inputValue + " " + fecha);
     li.appendChild(t);
     if (inputValue === '') {
-      alert("You must write something!");
+      alert("Escriba un texto");
     } else {
-      document.getElementById("myUL").appendChild(li);
+      document.getElementById("seccionUL").appendChild(li);
     }
-    document.getElementById("myInput").value = "";
+    document.getElementById("escrito").value = "";
   
     var span = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");
-    span.className = "close";
+    span.className = "cerrar";
     span.appendChild(txt);
     li.appendChild(span);
   
-    for (i = 0; i < close.length; i++) {
-      close[i].onclick = function() {
+    for (i = 0; i < cerrar.length; i++) {
+      cerrar[i].onclick = function() {
         var div = this.parentElement;
         div.style.display = "none";
       }
